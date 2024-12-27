@@ -4,7 +4,7 @@
     </div>
     
 
-    <form class="max-w-full mb-5" action="{{ url('/') }}" method="GET">   
+    <form class="max-w-full mb-5" action="{{ route('admin.members') }}" method="GET">   
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
       <div class="relative">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

@@ -81,12 +81,14 @@
                 </a>
                 <h1 id="netfund" class="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-2">0.00</h1>
                 <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-6">The total amount remaining in your fund after subtracting the loan balance from your total contributions and interest.</p>
+                @if( $auth->role == 'admin' )
                 <button class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-gray-600 hover:bg-gray-500">
-                    Release Request
+                    Release
                     <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
                 </button>
+                @endif
             </div>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
@@ -166,13 +168,15 @@
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
                                 {{ date_format(date_create($contribution->date),"M j, Y") }}
                             </th>
-                            <td class="px-6 py-4 flex items-center">
-                            @if($contribution->status == 'Pending')
-                                <div class="h-2.5 w-2.5 rounded-full bg-gray-500 me-2"></div>
-                            @elseif($contribution->status == 'Posted')
-                                <div class="h-2.5 w-2.5 rounded-full bg-blue-500 me-2"></div>
-                            @endif
-                            {{ $contribution->status }}
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                @if($contribution->status == 'Pending')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-gray-500 me-2"></div>
+                                @elseif($contribution->status == 'Posted')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-blue-500 me-2"></div>
+                                @endif
+                                {{ $contribution->status }}
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-end">
                             {{ number_format($contribution->amount,2) }}
@@ -247,13 +251,15 @@
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
                                 {{ date_format(date_create($loan->date),"M j, Y") }}
                             </th>
-                            <td class="px-6 py-4 flex items-center">
-                            @if($loan->status == 'Pending')
-                                <div class="h-2.5 w-2.5 rounded-full bg-gray-500 me-2"></div>
-                            @elseif($loan->status == 'Posted')
-                                <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2"></div>
-                            @endif
-                                {{ $loan->status }}
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                @if($loan->status == 'Pending')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-gray-500 me-2"></div>
+                                @elseif($loan->status == 'Posted')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2"></div>
+                                @endif
+                                    {{ $loan->status }}
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-end">
                                 {{ number_format($net,2) }}
@@ -337,13 +343,15 @@
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
                                 {{ date_format(date_create($creditpay->date),"M j, Y") }}
                             </th>
-                            <td class="px-6 py-4 flex items-center">
-                            @if($creditpay->status == 'Pending')
-                                <div class="h-2.5 w-2.5 rounded-full bg-gray-500 me-2"></div>
-                            @elseif($creditpay->status == 'Posted')
-                                <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
-                            @endif
-                            {{ $creditpay->status }}
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                @if($creditpay->status == 'Pending')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-gray-500 me-2"></div>
+                                @elseif($creditpay->status == 'Posted')
+                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
+                                @endif
+                                {{ $creditpay->status }}
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-end">
                             {{ number_format($creditpay->amount, 2) }}

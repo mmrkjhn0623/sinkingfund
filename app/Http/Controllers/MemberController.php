@@ -37,8 +37,6 @@ class MemberController extends Controller
             'Password' => 'required|string'
         ]);
 
-
-
         if ($request->file('Profile')) {
 
             // Store the file in the 'uploads' directory under 'storage/app/public/uploads'
@@ -55,7 +53,6 @@ class MemberController extends Controller
             $profilepath = '';
 
         }
-        // Insert data into the database
 
         $member = new Member;
         $member->Firstname = $validated['Firstname'];
@@ -84,15 +81,15 @@ class MemberController extends Controller
 
     public function show(string $id = ''){
 
-        $userid = Auth::user()->member_id;
+        $auth = Auth::user();
 
         if($id){
             $memberid = $id;
         }
         else{
-            $memberid = $userid;
+            $memberid = $auth->member_id;
         }
-        $user = Member::findOrFail($userid);
+        $user = Member::findOrFail($auth->member_id);
         $member = Member::findOrFail($memberid);
 
         $contributions = SfContribution::where('member_id', $memberid)
@@ -111,7 +108,7 @@ class MemberController extends Controller
         $totalinterest = SfInterest::sum('amount');
 
         // Pass the member data to the view
-        return view('memberinfo.main', compact('user', 'member','contributions','loans', 'creditpays','totalfund', 'totalinterest'));
+        return view('memberinfo.main', compact('user', 'auth', 'member','contributions','loans', 'creditpays','totalfund', 'totalinterest'));
     }
 
     public function update(Request $request, string $id = ''){

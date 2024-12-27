@@ -70,6 +70,7 @@ Route::middleware('auth')->controller(MemberController::class)->group(function (
 
 Route::middleware([AdminRole::class])->controller(MemberController::class)->group(function () {
     Route::post('newmember', 'store')->name('members.store');
+
     Route::get('/memberinfo/{id}', 'show')
         ->name('members.show')
         ->middleware(DecryptId::class.':id');

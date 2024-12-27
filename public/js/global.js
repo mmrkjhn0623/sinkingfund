@@ -88,13 +88,20 @@ function TransactionDetails(){
         }
     ).format(loanbal);
 
-    document.getElementById("netfund").innerHTML = new Intl.NumberFormat(
+    document.getElementById("netfund").innerHTML = netfund_val = new Intl.NumberFormat(
         "en-US",
         {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
         }
     ).format(netfund);
+
+    const loanAmountInput = document.getElementById("loan_amount");
+    if (netfund_val > 0) {
+        loanAmountInput.setAttribute("max", netfund_val);
+    } else {
+        loanAmountInput.setAttribute("max", 0);
+    }
 }
 
 function displaySelectedProfile(e) {
@@ -121,8 +128,15 @@ function showNewContrib() {
     newcontrib.classList.toggle("show");
 }
 function showNewLoan() {
-    const newloan = document.getElementById("newloan");
-    newloan.classList.toggle("show");
+    const netfund = document.getElementById("netfund").innerHTML;
+    const loanmax = parseFloat(netfund.replace(/,/g, ''));
+    if(loanmax > 0){
+        const newloan = document.getElementById("newloan");
+        newloan.classList.toggle("show");
+    }
+    else{
+        showMessage("You can't process a loan request  at the moment.");
+    }
 }
 function showCreditPay() {
     const loanbal = document.getElementById("loanbal").innerHTML;
@@ -165,6 +179,21 @@ function ClearEditForm() {
     document.getElementById("profile").value = "";
     const profile_selector = document.getElementById("profile_selector");
     profile_selector.src = profile_selector.getAttribute("default-data");
+}
+
+function ClearAddNewMember(){
+    const inputFields = document.querySelectorAll("#addnewmembersection input, #addnewmembersection textarea");
+    inputFields.forEach(field => {
+        field.value = "";
+        field.classList.remove("errorfield");
+    });
+    document.getElementById("profile_selector").src = "./public/storage/profileimg/profile_ph.jpg";
+    const inputcheck = document.querySelectorAll("#addnewmembersection input[type='radio']");
+    inputcheck.forEach(check => {
+        check.checked = false;
+    });
+    document.getElementById("ul-gender").classList.remove("errorfield");
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function setPassword(){
