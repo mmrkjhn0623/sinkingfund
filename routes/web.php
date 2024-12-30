@@ -9,6 +9,7 @@ use App\Http\Controllers\LoanController;
 use App\Http\Controllers\CreditpayController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReleaseController;
 
 use App\Models\Member;
 use App\Models\User;
@@ -19,6 +20,10 @@ use App\Http\Middleware\AdminRole;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+
+use Barryvdh\DomPDF\Facade\Pdf;
+
+
 
 Route::get('/about', function () {
     return view('about');
@@ -88,12 +93,25 @@ Route::middleware([AdminRole::class])->controller(MemberController::class)->grou
     Route::get('/updateloan/{action}/{id}', [LoanController::class, 'update'])
         ->name('loan.update')
         ->middleware(DecryptId::class.':id');
+    
+    Route::get('/release/{id}', [ReleaseController::class, 'release'])
+        ->name('release.process')
+        ->middleware(DecryptId::class.':id');
+
+    Route::get('/releasedetail/{id}', [ReleaseController::class, 'printdetails'])
+        ->name('release.print')
+        ->middleware(DecryptId::class.':id');
+    
 });
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 
+Route::get('/pdffile', function () {
+    $pdf = Pdf::loadView('pdftemp');
+    return $pdf->stream();
+});
 
 
 

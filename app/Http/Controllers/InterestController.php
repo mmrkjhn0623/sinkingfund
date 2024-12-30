@@ -30,7 +30,7 @@ class InterestController extends Controller
                 ])
                 ->join('sf_interests', 'sf_loans.loan_id', '=', 'sf_interests.loan_id')
                 ->join('members', 'sf_loans.member_id', '=', 'members.member_id')
-                ->where('sf_loans.status', 'Posted')
+                ->where('sf_loans.status', '!=', 'Declined')
                 ->orderBy('interest', 'DESC')
                 ->get();
 

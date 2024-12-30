@@ -154,7 +154,7 @@ function showCreditPay() {
 function ClearEditForm() {
     showEditform();
     const inputEditMember = document.querySelectorAll(
-        "#editmemberinfo input[type=text], #editmemberinfo input[type=email]"
+        "#editmemberinfo input[type=text], #editmemberinfo input[type=number], #editmemberinfo input[type=email]"
     );
     inputEditMember.forEach((element) => {
         element.value = element.getAttribute("default-data");
