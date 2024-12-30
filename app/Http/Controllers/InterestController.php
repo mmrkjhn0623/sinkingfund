@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\SfLoan;
 use App\Models\SfInterest;
+use App\Models\SfRelease;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +34,10 @@ class InterestController extends Controller
                 ->where('sf_loans.status', '!=', 'Declined')
                 ->orderBy('interest', 'DESC')
                 ->get();
+        
+        $rel_interest = SfInterest::where('amount','<', 0)
+                            ->sum('amount');
 
-        return view('interests', compact('user', 'interests'));
+        return view('interests', compact('user', 'interests', 'rel_interest'));
     }
 }

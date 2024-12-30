@@ -235,3 +235,13 @@ function closeMessage(){
     document.getElementById("viewmessage").classList.toggle("show");
     document.getElementById("message_p").innerHTML = "";
 }
+
+function checkRelease(e){
+    const netfund = document.getElementById("netfund").innerHTML;
+    if(parseFloat(netfund.replace(/,/g, '')) > 0 ){
+        window.location.href = e.getAttribute("action-path");
+    }
+    else{
+        showMessage("You can't process a release right now.");
+    }
+}

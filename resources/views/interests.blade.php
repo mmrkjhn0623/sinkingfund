@@ -70,8 +70,11 @@
         <a href="#" class="bg-blue-100 text-yellow-800 text-md font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-yellow-400 mb-2">
             Generated Interest
         </a>
-        <h2 id="totalcontributions" class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">{{ number_format($totalinterest, 2) }}</h2>
-        <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Generated interest from the total loans</p>
+        @php 
+            $gen_int = $totalinterest + $rel_interest;
+        @endphp
+        <h2 id="totalcontributions" class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">{{ number_format($gen_int, 2) }}</h2>
+        <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Generated interest from the total loans.</p>
     </div>
 </div>
 
