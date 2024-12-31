@@ -30,7 +30,7 @@
             </div>
             <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8">
                 <a href="{{ url('/generatedinterest') }}" class="bg-green-100 text-green-800 text-md font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-yellow-400 mb-2">
-                    Generated Interest
+                    Generated Revenue
                 </a>
                 <h2 id="prointerest" class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">{{ number_format($totalinterest, 2) }}</h2>
                 <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Generated interest from the loans</p>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex lg:flex-row flex-col gap-6 items-start max-w-screen-xl mx-auto mt-10 mb-16">
+<div class="flex lg:flex-row flex-col-reverse gap-6 items-start max-w-screen-xl mx-auto mt-10 mb-16">
     <div class="container max-w-screen-xl mx-auto card p-4 pb-8 rounded-lg">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl dark:text-gray-50 font-bold">Contributions</h2>

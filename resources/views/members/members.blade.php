@@ -32,7 +32,7 @@
               <img class="h-24 w-24 flex-none rounded-full bg-gray-50 object-cover" src="{{ asset('/public/storage/profileimg/profile_ph.jpg') }}" alt="Default Image"> 
           @endif
           <div class="min-w-0 flex-auto">
-            <p class="font-semibold leading-6 text-center">{{$member->Lastname}}, {{$member->Firstname}} {{$member->MI}}</p>
+            <p class="font-semibold leading-6 text-center">{{$member->Firstname}} {{$member->Lastname}}</p>
             <p class="mt-1 truncate leading-5 text-base text-gray-400 text-center">{{$member->Job}}</p>
           </div>
         </div>

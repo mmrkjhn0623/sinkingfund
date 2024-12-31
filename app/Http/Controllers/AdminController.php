@@ -25,6 +25,7 @@ class AdminController extends Controller
         ->map(function ($contribution) {
             return [
                 'contribution_id' => $contribution->contribution_id,
+                'member_id' => $contribution->member->member_id,
                 'firstname' => $contribution->member->Firstname,
                 'lastname' => $contribution->member->Lastname,
                 'image' => $contribution->member->image,
@@ -42,6 +43,7 @@ class AdminController extends Controller
         ->map(function ($pending_creditpay) {
             return [
                 'creditpay_id' => $pending_creditpay->creditpay_id,
+                'member_id' => $pending_creditpay->member->member_id,
                 'firstname' => $pending_creditpay->member->Firstname,
                 'lastname' => $pending_creditpay->member->Lastname,
                 'image' => $pending_creditpay->member->image,
@@ -59,6 +61,7 @@ class AdminController extends Controller
         ->map(function ($pending_loan) {
             return [
                 'loan_id' => $pending_loan->loan_id,
+                'member_id' => $pending_loan->member->member_id,
                 'firstname' => $pending_loan->member->Firstname,
                 'lastname' => $pending_loan->member->Lastname,
                 'image' => $pending_loan->member->image,

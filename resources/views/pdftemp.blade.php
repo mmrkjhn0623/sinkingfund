@@ -8,7 +8,7 @@
             line-height: 1.4;
         }
         .daterelease{
-            margin-bottom: 32px;
+            margin-bottom: 0px;
         }
         h1, h2, h3, h4 {
             color: #333;
@@ -28,17 +28,36 @@
         .header{
             padding-bottom: 12px;
             border-bottom: 1px solid #000;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
+        }
+        .site, .doc-title{
+            text-align: center;
+        }
+        .site{
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .doc-title{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .name{
+            font-size: 20px;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <p class="daterelease">{{ date_format(date_create($release->date), "M j, Y") }}</p>
-        <h2 class="name">{{$member->Firstname}} {{ $member->Lastname}}</h2>
-        <p class="job">{{$member->Job}}</p>
+        <p class="site">Piggycash</p>
+        <p class="doc-title">Transaction Details</p>
+        <br/>
+        <p class="name">{{$member->Firstname}} {{ $member->Lastname}}</p>
+        <p class="job" >{{$member->Job}}</p>
         <p class="address">{{$member->Address}}</p>
         <p class="contact-email">{{$member->Contact}} | {{$member->Email}}</p>
+        <br/>
+        <p class="daterelease">Release Date: {{ date_format(date_create($release->date), "M j, Y") }}</p>
     </div>
     <table>
         <tbody style="border-bottom: 1px solid #000;">

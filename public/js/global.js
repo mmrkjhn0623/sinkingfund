@@ -131,11 +131,12 @@ function showNewLoan() {
     const netfund = document.getElementById("netfund").innerHTML;
     const loanmax = parseFloat(netfund.replace(/,/g, ''));
     if(loanmax > 0){
+        document.getElementById("loan_amount").setAttribute("max",loanmax);
         const newloan = document.getElementById("newloan");
         newloan.classList.toggle("show");
     }
     else{
-        showMessage("You can't process a loan request  at the moment.");
+        showMessage("You can't process a loan request at the moment.");
     }
 }
 function showCreditPay() {
@@ -242,6 +243,6 @@ function checkRelease(e){
         window.location.href = e.getAttribute("action-path");
     }
     else{
-        showMessage("You can't process a release right now.");
+        showMessage("Invalid amount to process the release.");
     }
 }
