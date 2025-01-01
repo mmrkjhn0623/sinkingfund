@@ -25,17 +25,11 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 
 
-Route::get('/about', function () {
-    return view('about');
+Route::get('/privacypolicy', function () {
+    return view('privacypolicy');
 });
-Route::get('/services', function () {
-    return view('services');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::get('/termsandconditions', function () {
+    return view('termsandconditions');
 });
 
 Route::middleware('auth')->controller(MemberController::class)->group(function () {

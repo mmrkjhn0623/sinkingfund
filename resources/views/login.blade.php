@@ -55,9 +55,9 @@
         <div class="max-w-screen-xl mx-auto py-8 flex flex-row flex-wrap gap-4 sm:justify-between justify-center items-center border-t border-gray-800">
             <h3 class="font-bold text-gray-400">Piggycash</h3>
             <div class="flex flex-wrap flex-row sm:justify-end justify-center gap-5 sm:w-auto w-full gap-4 text-gray-500">
-                <a href="#" class="hover:text-gray-300">Terms & Conditions</a>
+                <a href="{{ url('/termsandconditions') }}" class="hover:text-gray-300">Terms & Conditions</a>
                 <p class="text-base sm:inline hidden">|</p>
-                <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                <a href="{{ url('/privacypolicy') }}" class="hover:text-gray-300">Privacy Policy</a>
                 <p class="text-base sm:inline hidden">|</p>
                 <p class="text-base">All Right Reserved {{ date("Y") }}.</p>
             </div>

@@ -56,9 +56,14 @@ function TransactionDetails(){
     var totalfund = document.getElementById("totalfund")?.value ?? 0;
     var totalinterest = document.getElementById("totalinterest")?.value ?? 0;
 
-    var p_interest = (parseFloat(totalcontrib) / parseFloat(totalfund)) * 100;
+    var p_interest = (parseFloat(totalcontrib) / parseFloat(totalfund)) * 100 ;
+    p_interest = !isNaN(p_interest) ? p_interest : 0;
+
     var intallo = (p_interest * totalinterest) / 100;
+    intallo = !isNaN(intallo) ? intallo : 0;
+
     var netfund = totalcontrib - loanbal + intallo;
+    netfund = !isNaN(netfund) ? netfund : 0;
 
     document.getElementById("totalcontributions").innerHTML =
         new Intl.NumberFormat("en-US", {
@@ -136,7 +141,7 @@ function showNewLoan() {
         newloan.classList.toggle("show");
     }
     else{
-        showMessage("You can't process a loan request at the moment.");
+        showMessage("You can't process a loan request  at the moment.");
     }
 }
 function showCreditPay() {
