@@ -26,8 +26,8 @@
 @endif
 
 @if(session('released'))
-  <div id="alert-3" class="flex max-w-screen-xl p-6 my-16 mx-auto items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-600 dark:text-gray-50" role="alert">
-    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+<div id="alert-3" class="flex max-w-screen-xl p-6 my-16 mx-auto sm:items-center items-start p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-600 dark:text-gray-50" role="alert">
+    <svg class="flex-shrink-0 w-4 h-4 sm:mt-0 mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
       <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
     </svg>
     <span class="sr-only">Info</span>
@@ -35,8 +35,8 @@
         $releasedid = encryptid(session('released_id'));
     @endphp
     <div class="ms-3 font-bold">
-        {{ session('released') }}
-        <a href="{{ route('release.print', $releasedid) }}" class="ml-2 p-2 dark:bg-gray-600 rounded-lg dark:text-grap-300 border dark:border-gray-500 hover:bg-gray-500">
+        <span>{{ session('released') }}</span>
+        <a href="{{ route('release.print', $releasedid) }}" class="sm:ml-2 ml-0 p-2 dark:bg-gray-600 rounded-lg dark:text-grap-300 sm:border border-0 sm:no-underline underline dark:border-gray-500 hover:bg-gray-500">
             Download Release Detail
         </a>
     </div>
@@ -46,7 +46,7 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
         </svg>
     </button>
-  </div>
+</div>
 @endif
 
 <div class="flex lg:flex-row flex-col gap-6 items-start max-w-screen-xl mx-auto mt-10 mb-16">

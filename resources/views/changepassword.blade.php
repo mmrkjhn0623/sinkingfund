@@ -22,7 +22,13 @@
 @endif
 <div id="changepassword" class="container relative card lg:max-w-md max-w-full p-8 mx-auto sm:mb-52 mb-12 rounded-lg">
     <h2 class="text-3xl mb-8 font-bold">Change Password</h2>
-    <!-- <p class="text-base text-gray-500">Nam id molestie erat. Curabitur vel dictum enim. Integer ultrices auctor tempor.</p> -->
+    @if ($errors->any())
+        <ul class="appearance-none block w-full rounded py-3 px-4 mb-3 dark:text-red-600">
+            @foreach ($errors->all() as $error)
+                <li>* {{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     <form class="w-full relative" action="{{ route('update.password')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT') <!-- Use the PUT method for updating -->
